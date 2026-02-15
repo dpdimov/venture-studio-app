@@ -4,36 +4,50 @@ export type SurveyQuestion = {
   type: "rating" | "text";
 };
 
-// Placeholder questions — swap in real Qualtrics questions when provided
 export const surveyQuestions: SurveyQuestion[] = [
   {
-    id: "q1",
-    text: "How innovative is this venture idea?",
+    id: "problem",
+    text: "How clearly does this venture identify a real, validated problem?",
     type: "rating",
   },
   {
-    id: "q2",
-    text: "How feasible is this venture?",
+    id: "solution",
+    text: "How well does the proposed solution address the identified problem?",
     type: "rating",
   },
   {
-    id: "q3",
-    text: "How well does the team understand the market?",
+    id: "market",
+    text: "How convincing is the market opportunity?",
     type: "rating",
   },
   {
-    id: "q4",
-    text: "How clear is the value proposition?",
+    id: "competitive_advantage",
+    text: "How sustainable is the venture's competitive advantage?",
     type: "rating",
   },
   {
-    id: "q5",
-    text: "Overall, how would you rate this venture?",
+    id: "vision_impact",
+    text: "How compelling is the venture's vision and intended impact?",
     type: "rating",
   },
   {
-    id: "q6",
-    text: "What feedback would you give to this team?",
+    id: "milestone",
+    text: "How achievable and well-defined is the next milestone?",
+    type: "rating",
+  },
+  {
+    id: "funding",
+    text: "How well justified is the funding ask relative to the plan?",
+    type: "rating",
+  },
+  {
+    id: "overall",
+    text: "Overall, how would you rate this venture's potential?",
+    type: "rating",
+  },
+  {
+    id: "comments",
+    text: "What feedback or observations would you share with this team?",
     type: "text",
   },
 ];

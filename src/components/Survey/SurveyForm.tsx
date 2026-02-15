@@ -20,7 +20,7 @@ const StarRating = ({
           className={`text-2xl transition ${
             star <= value
               ? "text-yellow"
-              : "text-gray-300 dark:text-gray-600"
+              : "text-gray-300"
           }`}
         >
           &#9733;
@@ -80,8 +80,8 @@ export default function SurveyForm({ projectId }: { projectId: string }) {
       <section className="pb-[120px] pt-[150px]">
         <div className="container">
           <div className="mx-auto max-w-[600px] text-center">
-            <div className="mb-8 text-6xl">&#10003;</div>
-            <h2 className="mb-4 text-3xl font-bold text-black dark:text-white">
+            <div className="mb-8 text-6xl text-primary">&#10003;</div>
+            <h2 className="mb-4 font-serif text-3xl font-bold text-black">
               Thank You!
             </h2>
             <p className="text-base text-body-color">
@@ -93,12 +93,15 @@ export default function SurveyForm({ projectId }: { projectId: string }) {
     );
   }
 
+  const inputClass =
+    "w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-black outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/10";
+
   return (
     <section className="pb-[120px] pt-[150px]">
       <div className="container">
         <div className="mx-auto max-w-[700px]">
-          <div className="rounded-sm bg-white p-8 shadow-one dark:bg-dark sm:p-12">
-            <h2 className="mb-2 text-2xl font-bold text-black dark:text-white sm:text-3xl">
+          <div className="rounded-card border border-gray-200 bg-white p-8 shadow-card sm:p-12">
+            <h2 className="mb-2 font-serif text-2xl font-bold text-black sm:text-3xl">
               Evaluate Venture
             </h2>
             {projectTitle && (
@@ -106,7 +109,7 @@ export default function SurveyForm({ projectId }: { projectId: string }) {
             )}
 
             {error && (
-              <div className="mb-6 rounded bg-red-50 p-3 text-sm text-red-600 dark:bg-red-900/20 dark:text-red-400">
+              <div className="mb-6 rounded-lg bg-red-50 p-3 text-sm text-red-600">
                 {error}
               </div>
             )}
@@ -114,25 +117,25 @@ export default function SurveyForm({ projectId }: { projectId: string }) {
             <form onSubmit={handleSubmit}>
               <div className="mb-8 grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="mb-2 block text-sm text-dark dark:text-white">
+                  <label className="mb-2 block text-sm font-medium text-black">
                     Your Name (optional)
                   </label>
                   <input
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="border-stroke w-full rounded-sm border bg-[#f8f8f8] px-4 py-3 text-sm text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark"
+                    className={inputClass}
                   />
                 </div>
                 <div>
-                  <label className="mb-2 block text-sm text-dark dark:text-white">
+                  <label className="mb-2 block text-sm font-medium text-black">
                     Your Email (optional)
                   </label>
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="border-stroke w-full rounded-sm border bg-[#f8f8f8] px-4 py-3 text-sm text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark"
+                    className={inputClass}
                   />
                 </div>
               </div>
@@ -140,7 +143,7 @@ export default function SurveyForm({ projectId }: { projectId: string }) {
               <div className="space-y-8">
                 {surveyQuestions.map((q) => (
                   <div key={q.id}>
-                    <label className="mb-3 block text-base font-medium text-dark dark:text-white">
+                    <label className="mb-3 block text-base font-medium text-black">
                       {q.text}
                     </label>
                     {q.type === "rating" ? (
@@ -160,7 +163,7 @@ export default function SurveyForm({ projectId }: { projectId: string }) {
                           }))
                         }
                         rows={4}
-                        className="border-stroke w-full rounded-sm border bg-[#f8f8f8] px-4 py-3 text-sm text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark"
+                        className={inputClass}
                       />
                     )}
                   </div>
@@ -171,7 +174,7 @@ export default function SurveyForm({ projectId }: { projectId: string }) {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80 disabled:opacity-70"
+                  className="rounded-lg bg-primary px-8 py-4 text-base font-semibold text-white shadow-btn transition duration-300 hover:bg-primary/90 disabled:opacity-70"
                 >
                   {loading ? "Submitting..." : "Submit Evaluation"}
                 </button>

@@ -6,9 +6,13 @@ import { authOptions } from "@/lib/auth";
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const limit = searchParams.get("limit");
+  const admin = searchParams.get("admin");
+
+  const session = admin ? await getServerSession(authOptions) : null;
+  const isAdmin = !!session?.user?.isAdmin;
 
   const projects = await prisma.project.findMany({
-    where: { isVisible: true },
+    where: isAdmin ? {} : { isVisible: true },
     orderBy: { createdAt: "desc" },
     ...(limit ? { take: parseInt(limit) } : {}),
     select: {
@@ -18,6 +22,8 @@ export async function GET(request: NextRequest) {
       image: true,
       createdAt: true,
       surveyEnabled: true,
+      isVisible: true,
+      ...(isAdmin ? { editKey: true } : {}),
       createdBy: { select: { name: true } },
     },
   });

@@ -1,13 +1,12 @@
 import ScrollUp from "@/components/Common/ScrollUp";
 import Hero from "@/components/Hero";
-import Features from "@/components/Features";
 import Project from "@/components/Project";
 
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Venture Studio",
-  description: "Unleash Innovation — Bring your venture ideas to life.",
+  description: "Present your venture to a community of students, alumni, and professionals — and get the feedback that matters.",
 };
 
 export default function Home() {
@@ -15,7 +14,6 @@ export default function Home() {
     <>
       <ScrollUp />
       <Hero />
-      <Features />
       <Project />
     </>
   );

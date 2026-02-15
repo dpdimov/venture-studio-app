@@ -15,15 +15,15 @@ export default function AdminDashboard() {
 
   return (
     <div>
-      <h1 className="mb-8 text-3xl font-bold text-black dark:text-white">
+      <h1 className="mb-8 font-serif text-3xl font-bold text-black">
         Dashboard
       </h1>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <div className="rounded-sm bg-white p-6 shadow-one dark:bg-dark">
-          <h3 className="mb-2 text-sm font-medium text-body-color">
+        <div className="rounded-card border border-gray-200 bg-white p-6 shadow-card">
+          <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-body-color">
             Total Projects
           </h3>
-          <p className="text-3xl font-bold text-primary">{stats.projects}</p>
+          <p className="font-serif text-3xl font-bold text-primary">{stats.projects}</p>
           <Link
             href="/admin/projects"
             className="mt-4 inline-block text-sm text-primary hover:underline"
@@ -31,11 +31,11 @@ export default function AdminDashboard() {
             Manage projects
           </Link>
         </div>
-        <div className="rounded-sm bg-white p-6 shadow-one dark:bg-dark">
-          <h3 className="mb-2 text-sm font-medium text-body-color">
+        <div className="rounded-card border border-gray-200 bg-white p-6 shadow-card">
+          <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-body-color">
             Survey Responses
           </h3>
-          <p className="text-3xl font-bold text-primary">{stats.surveys}</p>
+          <p className="font-serif text-3xl font-bold text-primary">{stats.surveys}</p>
           <Link
             href="/admin/surveys"
             className="mt-4 inline-block text-sm text-primary hover:underline"

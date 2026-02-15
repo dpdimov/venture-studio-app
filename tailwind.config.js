@@ -1,13 +1,10 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require("tailwindcss/colors");
-
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: "class",
   theme: {
     container: {
       center: true,
@@ -26,41 +23,38 @@ module.exports = {
         current: "currentColor",
         transparent: "transparent",
         white: "#FFFFFF",
-        black: "#121723",
-        dark: "#1D2430",
+        black: "#1a1a1a",
         primary: "#1270B4",
         yellow: "#FBB040",
-        "bg-color-dark": "#171C28",
-        "body-color": {
-          DEFAULT: "#788293",
-          dark: "#959CB1",
-        },
-        stroke: {
-          stroke: "#E3E8EF",
-          dark: "#353943",
-        },
+        cream: "#f7f5f0",
+        "body-color": "#788293",
+        stroke: "#d5d0c8",
         gray: {
-          ...colors.gray,
-          dark: "#1E232E",
-          light: "#F0F2F9",
+          50: "#fafaf7",
+          100: "#f7f5f0",
+          200: "#e0dcd4",
+          300: "#d5d0c8",
+          400: "#999",
+          500: "#788293",
+          600: "#555",
+          700: "#333",
+          800: "#1a1a1a",
+          900: "#111",
         },
+      },
+      fontFamily: {
+        sans: ["DM Sans", "sans-serif"],
+        serif: ["Source Serif 4", "Georgia", "serif"],
       },
       boxShadow: {
-        signUp: "0px 5px 10px rgba(4, 10, 34, 0.2)",
-        one: "0px 2px 3px rgba(7, 7, 77, 0.05)",
-        two: "0px 5px 10px rgba(6, 8, 15, 0.1)",
-        three: "0px 5px 15px rgba(6, 8, 15, 0.05)",
-        sticky: "inset 0 -1px 0 0 rgba(0, 0, 0, 0.1)",
-        "sticky-dark": "inset 0 -1px 0 0 rgba(255, 255, 255, 0.1)",
-        "feature-2": "0px 10px 40px rgba(48, 86, 211, 0.12)",
-        submit: "0px 5px 20px rgba(4, 10, 34, 0.1)",
-        "submit-dark": "0px 5px 20px rgba(4, 10, 34, 0.1)",
-        btn: "0px 1px 2px rgba(4, 10, 34, 0.15)",
-        "btn-hover": "0px 1px 2px rgba(0, 0, 0, 0.15)",
-        "btn-light": "0px 1px 2px rgba(0, 0, 0, 0.1)",
+        card: "0 1px 4px rgba(0,0,0,0.04)",
+        "card-hover": "0 4px 12px rgba(0,0,0,0.08)",
+        subtle: "0 1px 2px rgba(0,0,0,0.04)",
+        sticky: "inset 0 -1px 0 0 rgba(0, 0, 0, 0.06)",
+        btn: "0px 1px 2px rgba(4, 10, 34, 0.1)",
       },
-      dropShadow: {
-        three: "0px 5px 15px rgba(6, 8, 15, 0.05)",
+      borderRadius: {
+        card: "12px",
       },
     },
   },

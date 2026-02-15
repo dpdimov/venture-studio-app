@@ -100,7 +100,6 @@ export default function ProjectForm({
       return;
     }
 
-    // YouTube
     const ytMatch = url.match(
       /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]+)/,
     );
@@ -112,7 +111,6 @@ export default function ProjectForm({
       return;
     }
 
-    // Vimeo
     const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
     if (vimeoMatch) {
       setData((prev) => ({
@@ -155,20 +153,20 @@ export default function ProjectForm({
   };
 
   const inputClass =
-    "border-stroke w-full rounded-sm border bg-[#f8f8f8] px-4 py-3 text-sm text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark";
+    "w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-black outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/10";
 
   return (
     <form onSubmit={handleSubmit}>
       {error && (
-        <div className="mb-6 rounded bg-red-50 p-3 text-sm text-red-600 dark:bg-red-900/20 dark:text-red-400">
+        <div className="mb-6 rounded-lg bg-red-50 p-3 text-sm text-red-600">
           {error}
         </div>
       )}
 
-      <div className="rounded-sm bg-white p-6 shadow-one dark:bg-dark sm:p-8">
+      <div className="rounded-card border border-gray-200 bg-white p-6 shadow-card sm:p-8">
         {/* Title */}
         <div className="mb-6">
-          <label className="mb-2 block text-sm font-medium text-dark dark:text-white">
+          <label className="mb-2 block text-sm font-medium text-black">
             Title *
           </label>
           <input
@@ -183,7 +181,7 @@ export default function ProjectForm({
         {/* Pitch sections */}
         {pitchFields.map(({ key, label }) => (
           <div key={key} className="mb-6">
-            <label className="mb-2 block text-sm font-medium text-dark dark:text-white">
+            <label className="mb-2 block text-sm font-medium text-black">
               {label}
             </label>
             <textarea
@@ -199,7 +197,7 @@ export default function ProjectForm({
 
         {/* Image upload */}
         <div className="mb-6">
-          <label className="mb-2 block text-sm font-medium text-dark dark:text-white">
+          <label className="mb-2 block text-sm font-medium text-black">
             Project Image
           </label>
           {data.image?.src && (
@@ -207,7 +205,7 @@ export default function ProjectForm({
               <img
                 src={data.image.src}
                 alt="preview"
-                className="h-32 rounded object-cover"
+                className="h-32 rounded-lg object-cover"
               />
             </div>
           )}
@@ -225,7 +223,7 @@ export default function ProjectForm({
 
         {/* Video URL */}
         <div className="mb-6">
-          <label className="mb-2 block text-sm font-medium text-dark dark:text-white">
+          <label className="mb-2 block text-sm font-medium text-black">
             Video URL (YouTube or Vimeo)
           </label>
           <input
@@ -244,25 +242,25 @@ export default function ProjectForm({
 
         {/* Toggles */}
         <div className="mb-6 flex flex-wrap gap-6">
-          <label className="flex items-center gap-2 text-sm text-dark dark:text-white">
+          <label className="flex items-center gap-2 text-sm text-black">
             <input
               type="checkbox"
               checked={data.isVisible}
               onChange={(e) =>
                 setData((prev) => ({ ...prev, isVisible: e.target.checked }))
               }
-              className="h-4 w-4"
+              className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
             />
             Visible in public listing
           </label>
-          <label className="flex items-center gap-2 text-sm text-dark dark:text-white">
+          <label className="flex items-center gap-2 text-sm text-black">
             <input
               type="checkbox"
               checked={data.surveyEnabled}
               onChange={(e) =>
                 setData((prev) => ({ ...prev, surveyEnabled: e.target.checked }))
               }
-              className="h-4 w-4"
+              className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
             />
             Enable survey/evaluation
           </label>
@@ -270,8 +268,8 @@ export default function ProjectForm({
 
         {/* Edit link info */}
         {isEditing && initialData?.editKey && (
-          <div className="mb-6 rounded bg-primary/5 p-4 dark:bg-primary/10">
-            <p className="mb-1 text-sm font-medium text-dark dark:text-white">
+          <div className="mb-6 rounded-lg bg-primary/5 p-4">
+            <p className="mb-1 text-sm font-medium text-black">
               Edit Link (share with project creator):
             </p>
             <code className="break-all text-xs text-primary">
@@ -287,14 +285,14 @@ export default function ProjectForm({
         <button
           type="submit"
           disabled={saving}
-          className="rounded-sm bg-primary px-8 py-3 text-sm font-medium text-white hover:bg-primary/90 disabled:opacity-70"
+          className="rounded-lg bg-primary px-8 py-3 text-sm font-semibold text-white shadow-btn transition hover:bg-primary/90 disabled:opacity-70"
         >
           {saving ? "Saving..." : isEditing ? "Update Project" : "Create Project"}
         </button>
         <button
           type="button"
           onClick={() => router.back()}
-          className="rounded-sm border border-body-color/20 px-8 py-3 text-sm font-medium text-body-color hover:border-primary hover:text-primary"
+          className="rounded-lg border border-gray-200 px-8 py-3 text-sm font-medium text-body-color transition hover:border-primary hover:text-primary"
         >
           Cancel
         </button>

@@ -12,7 +12,6 @@ export default function AdminLayout({
   const pathname = usePathname();
   const { data: session } = useSession();
 
-  // Don't show admin layout on login page
   if (pathname === "/admin/login") {
     return <>{children}</>;
   }
@@ -27,12 +26,11 @@ export default function AdminLayout({
     <div className="pt-[120px]">
       <div className="container">
         <div className="flex flex-col lg:flex-row lg:gap-8">
-          {/* Sidebar */}
           <aside className="mb-8 w-full lg:mb-0 lg:w-64 lg:shrink-0">
-            <div className="rounded-sm bg-white p-6 shadow-one dark:bg-dark">
-              <div className="mb-6 border-b border-body-color/10 pb-4 dark:border-white/10">
+            <div className="rounded-card border border-gray-200 bg-white p-6 shadow-card">
+              <div className="mb-6 border-b border-gray-200 pb-4">
                 <p className="text-sm text-body-color">Signed in as</p>
-                <p className="font-medium text-dark dark:text-white">
+                <p className="font-medium text-black">
                   {session?.user?.name || session?.user?.email}
                 </p>
               </div>
@@ -41,27 +39,26 @@ export default function AdminLayout({
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`block rounded px-4 py-2 text-sm font-medium transition ${
+                    className={`block rounded-lg px-4 py-2 text-sm font-medium transition ${
                       pathname === item.href
                         ? "bg-primary text-white"
-                        : "text-body-color hover:bg-primary/10 hover:text-primary dark:text-body-color-dark"
+                        : "text-body-color hover:bg-primary/10 hover:text-primary"
                     }`}
                   >
                     {item.label}
                   </Link>
                 ))}
               </nav>
-              <div className="mt-6 border-t border-body-color/10 pt-4 dark:border-white/10">
+              <div className="mt-6 border-t border-gray-200 pt-4">
                 <button
                   onClick={() => signOut({ callbackUrl: "/" })}
-                  className="w-full rounded px-4 py-2 text-left text-sm font-medium text-red-500 transition hover:bg-red-50 dark:hover:bg-red-900/20"
+                  className="w-full rounded-lg px-4 py-2 text-left text-sm font-medium text-red-500 transition hover:bg-red-50"
                 >
                   Sign out
                 </button>
               </div>
             </div>
           </aside>
-          {/* Main content */}
           <main className="min-h-[60vh] flex-1 pb-20">{children}</main>
         </div>
       </div>

@@ -3,10 +3,13 @@ import { NextResponse } from "next/server";
 
 export default withAuth(
   function middleware(req) {
-    const token = req.nextauth.token;
-    const isAdminRoute = req.nextUrl.pathname.startsWith("/admin");
+    // Login page is always accessible
+    if (req.nextUrl.pathname === "/admin/login") {
+      return NextResponse.next();
+    }
 
-    if (isAdminRoute && !token?.isAdmin) {
+    const token = req.nextauth.token;
+    if (!token?.isAdmin) {
       return NextResponse.redirect(new URL("/admin/login", req.url));
     }
 
@@ -15,7 +18,6 @@ export default withAuth(
   {
     callbacks: {
       authorized: ({ token, req }) => {
-        // Allow access to login page without auth
         if (req.nextUrl.pathname === "/admin/login") return true;
         return !!token;
       },

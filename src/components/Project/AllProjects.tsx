@@ -51,7 +51,7 @@ const AllProjects = ({
         <div className="flex w-full flex-col items-center">
           <Image
             alt="Not Found"
-            src="/images/not_found.png"
+            src="/not_found.png"
             width={200}
             height={200}
           />
