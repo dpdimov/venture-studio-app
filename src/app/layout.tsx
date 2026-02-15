@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 import { Providers } from "./providers";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -23,6 +24,7 @@ export default function RootLayout({
           {children}
           <Footer />
           <ScrollToTop />
+          <Analytics />
         </Providers>
       </body>
     </html>
