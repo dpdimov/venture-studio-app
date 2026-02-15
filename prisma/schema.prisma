@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(cuid())
+  email     String    @unique
+  password  String
+  name      String
+  role      String?
+  university String?
+  isAdmin   Boolean   @default(false)
+  createdAt DateTime  @default(now())
+  projects  Project[]
+}
+
+model Project {
+  id               Int       @id @default(autoincrement())
+  title            String
+  shortDescription String?
+  problem          String?
+  solution         String?
+  product          String?
+  advantage        String?
+  market           String?
+  vision           String?
+  team             String?
+  funding          String?
+  nextMilestone    String?
+  image            Json?
+  video            Json?
+  attachments      Json?
+  isPrivate        Boolean   @default(false)
+  isVisible        Boolean   @default(true)
+  privateKey       String?   @default(cuid())
+  editKey          String?   @default(cuid())
+  surveyEnabled    Boolean   @default(false)
+  createdAt        DateTime  @default(now())
+  createdBy        User      @relation(fields: [createdById], references: [id])
+  createdById      String
+  surveyResponses  SurveyResponse[]
+}
+
+model SurveyResponse {
+  id              Int      @id @default(autoincrement())
+  project         Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId       Int
+  respondentName  String?
+  respondentEmail String?
+  answers         Json
+  createdAt       DateTime @default(now())
+}
